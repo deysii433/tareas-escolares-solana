@@ -57,7 +57,15 @@ export async function enviar(
     throw error;
   }
 
-  const firma = await wallet.sendTransaction(tx, connection);
+    // La wallet solo FIRMA y nosotros enviamos a Devnet por nuestro RPC.
+  // (Evita el "Unexpected error" de algunas wallets en modo testnet.)
+  let firma: string;
+  if (wallet.signTransaction) {
+    const firmada = await wallet.signTransaction(tx);
+    firma = await connection.sendRawTransaction(firmada.serialize(), { skipPreflight: true });
+  } else {
+    firma = await wallet.sendTransaction(tx, connection);
+  }
   const conf = await connection.confirmTransaction(
     { signature: firma, blockhash, lastValidBlockHeight },
     "confirmed",

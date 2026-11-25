@@ -5,11 +5,11 @@ Proyecto final del **Solana Engineering Track: Advanced (WayLearn)**.
 | Dato | Valor |
 |---|---|
 | **Ruta elegida** | Proyecto propio |
-| **Nombre para el certificado** | `TU NOMBRE COMPLETO` |
-| **Correo de registro** | `tu-correo@ejemplo.com` |
+| **Nombre para el certificado** | `DEYSI YANEL BAUTISTA PINEDA` |
+| **Correo de registro** | `deysipinedam134@gmail.com` |
 | **Red** | Devnet |
-| **Program ID** | `PEGA_AQUÍ_TU_PROGRAM_ID` |
-| **Transacción verificable** | `https://explorer.solana.com/tx/PEGA_AQUÍ_LA_FIRMA?cluster=devnet` |
+| **Program ID** | `7CLvTWMLF7E5pFpxYNn1rZHr4rPimoDWzhKDXUzjGoBQ` |
+| **Transacción verificable** | `https://explorer.solana.com/tx/5sJwHvCTvuXxA7nSo9L3Ba7o38CJxyzhWfNWZEmjXxarKCQ6NAYtpFNoV9L284Amzhh3xBwdgHMMeBPXFhtUKzf2?cluster=devnet` |
 
 ---
 
@@ -73,6 +73,7 @@ Es un proyecto propio, no una modificación del registro de ventas. Hice lo sigu
 - Generé el cliente con **Codama** a partir del IDL y lo conecté a un frontend **React + Wallet Adapter**.
 - El frontend **simula la transacción antes de pedir la firma**, así que si el programa la rechaza se muestra el motivo en español sin gastar SOL.
 - Escribí pruebas del cliente (Vitest) y pruebas del programa en Devnet con **casos de rechazo**.
+- Usé IA como apoyo para generar parte del código; revisé cada instrucción, corregí los errores que aparecieron al probar (pantalla en blanco por `process` y el envío con Phantom en Devnet) y verifiqué el flujo completo y los rechazos en Devnet.
 
 ## 5. Despliegue del programa (Solana Playground)
 
@@ -130,21 +131,21 @@ Cada operación confirmada muestra su firma con un enlace a `explorer.solana.com
 
 ## 8. Evidencias
 
-> Reemplaza con tus capturas y firmas reales.
+Todas las operaciones se pueden verificar en el historial del programa:
+https://explorer.solana.com/address/7CLvTWMLF7E5pFpxYNn1rZHr4rPimoDWzhKDXUzjGoBQ?cluster=devnet
 
 | Operación | Firma (Devnet) |
 |---|---|
-| crear_grupo | `...` |
-| agregar_alumno | `...` |
-| crear_tarea | `...` |
-| calificar_tarea | `...` |
-| eliminar_tarea | `...` |
-| Rechazo: eliminar tarea pendiente | captura del mensaje |
+| crear_grupo | [`5sJwHvCTvuXxA7nSo9L3Ba7o38CJxyzhWfNWZEmjXxarKCQ6NAYtpFNoV9L284Amzhh3xBwdgHMMeBPXFhtUKzf2`](https://explorer.solana.com/tx/5sJwHvCTvuXxA7nSo9L3Ba7o38CJxyzhWfNWZEmjXxarKCQ6NAYtpFNoV9L284Amzhh3xBwdgHMMeBPXFhtUKzf2?cluster=devnet) |
+| agregar_alumno | `PEGA_AQUI_58QBr...xzuiG` |
+| crear_tarea | `PEGA_AQUI_5wE4M...qu2xt` |
+| calificar_tarea | `PEGA_AQUI_4j4n3...26hh3` |
+| eliminar_tarea | `PEGA_AQUI_2vSNp...iMzR9` |
+| Rechazo: eliminar tarea sin calificar | El programa lo rechaza en la simulación y no se envía. Ver `images/rechazo.png` |
 
 ![Pantalla principal](images/app.png)
 ![Operación confirmada](images/confirmacion.png)
 ![Regla rechazada](images/rechazo.png)
-![Tests en Playground](images/tests-playground.png)
 
 ## 9. Tecnologías
 

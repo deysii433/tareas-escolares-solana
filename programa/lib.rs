@@ -4,7 +4,7 @@
 
 use anchor_lang::prelude::*;
 
-declare_id!("11111111111111111111111111111111");
+declare_id!("7CLvTWMLF7E5pFpxYNn1rZHr4rPimoDWzhKDXUzjGoBQ");
 
 const MAX_NOMBRE: usize = 32;
 const MAX_DESCRIPCION: usize = 200;

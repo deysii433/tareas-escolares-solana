@@ -81,7 +81,7 @@ import {
 } from "../instructions";
 
 export const TAREAS_ESCOLARES_PROGRAM_ADDRESS =
-  "11111111111111111111111111111111" as Address<"11111111111111111111111111111111">;
+  "7CLvTWMLF7E5pFpxYNn1rZHr4rPimoDWzhKDXUzjGoBQ" as Address<"7CLvTWMLF7E5pFpxYNn1rZHr4rPimoDWzhKDXUzjGoBQ">;
 
 export enum TareasEscolaresAccount {
   Alumno,
@@ -242,7 +242,7 @@ export function identifyTareasEscolaresInstruction(
 }
 
 export type ParsedTareasEscolaresInstruction<
-  TProgram extends string = "11111111111111111111111111111111",
+  TProgram extends string = "7CLvTWMLF7E5pFpxYNn1rZHr4rPimoDWzhKDXUzjGoBQ",
 > =
   | ({
       instructionType: TareasEscolaresInstruction.CrearGrupo;
