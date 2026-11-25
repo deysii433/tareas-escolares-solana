@@ -1,0 +1,485 @@
+{
+  "address": "11111111111111111111111111111111",
+  "metadata": {
+    "name": "tareas_escolares",
+    "version": "0.1.0",
+    "spec": "0.1.0"
+  },
+  "instructions": [
+    {
+      "name": "crear_grupo",
+      "docs": [
+        "Crea un grupo. El firmante queda como profesor (autoridad)."
+      ],
+      "discriminator": [
+        174,
+        60,
+        212,
+        217,
+        165,
+        125,
+        44,
+        35
+      ],
+      "accounts": [
+        {
+          "name": "profesor",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "grupo",
+          "writable": true
+        },
+        {
+          "name": "system_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "nombre",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "eliminar_grupo",
+      "docs": [
+        "Cierra el grupo. Regla: solo si ya no tiene alumnos."
+      ],
+      "discriminator": [
+        185,
+        33,
+        0,
+        231,
+        250,
+        4,
+        143,
+        135
+      ],
+      "accounts": [
+        {
+          "name": "profesor",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "grupo",
+          "writable": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "agregar_alumno",
+      "discriminator": [
+        74,
+        133,
+        253,
+        228,
+        104,
+        249,
+        231,
+        188
+      ],
+      "accounts": [
+        {
+          "name": "profesor",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "grupo",
+          "writable": true
+        },
+        {
+          "name": "alumno",
+          "writable": true
+        },
+        {
+          "name": "system_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "nombre",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "eliminar_alumno",
+      "docs": [
+        "Cierra al alumno. Regla: solo si no tiene tareas registradas."
+      ],
+      "discriminator": [
+        59,
+        66,
+        183,
+        223,
+        95,
+        179,
+        192,
+        109
+      ],
+      "accounts": [
+        {
+          "name": "profesor",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "grupo",
+          "writable": true
+        },
+        {
+          "name": "alumno",
+          "writable": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "crear_tarea",
+      "discriminator": [
+        96,
+        196,
+        190,
+        142,
+        25,
+        228,
+        92,
+        197
+      ],
+      "accounts": [
+        {
+          "name": "profesor",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "grupo"
+        },
+        {
+          "name": "alumno",
+          "writable": true
+        },
+        {
+          "name": "tarea",
+          "writable": true
+        },
+        {
+          "name": "system_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "titulo",
+          "type": "string"
+        },
+        {
+          "name": "descripcion",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "editar_tarea",
+      "docs": [
+        "Modifica la descripción. Regla: no se puede editar una tarea ya calificada."
+      ],
+      "discriminator": [
+        190,
+        201,
+        11,
+        0,
+        106,
+        93,
+        202,
+        28
+      ],
+      "accounts": [
+        {
+          "name": "profesor",
+          "signer": true
+        },
+        {
+          "name": "grupo"
+        },
+        {
+          "name": "alumno",
+          "writable": true
+        },
+        {
+          "name": "tarea",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "descripcion",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "calificar_tarea",
+      "docs": [
+        "Califica la tarea (0-100). Se puede corregir la calificación después."
+      ],
+      "discriminator": [
+        112,
+        47,
+        74,
+        48,
+        86,
+        151,
+        150,
+        242
+      ],
+      "accounts": [
+        {
+          "name": "profesor",
+          "signer": true
+        },
+        {
+          "name": "grupo"
+        },
+        {
+          "name": "alumno",
+          "writable": true
+        },
+        {
+          "name": "tarea",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "calificacion",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "eliminar_tarea",
+      "docs": [
+        "Cierra la tarea y devuelve la renta al profesor.",
+        "Regla: solo se pueden eliminar tareas ya calificadas."
+      ],
+      "discriminator": [
+        104,
+        110,
+        147,
+        244,
+        251,
+        141,
+        237,
+        202
+      ],
+      "accounts": [
+        {
+          "name": "profesor",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "grupo"
+        },
+        {
+          "name": "alumno",
+          "writable": true
+        },
+        {
+          "name": "tarea",
+          "writable": true
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Alumno",
+      "discriminator": [
+        167,
+        202,
+        151,
+        137,
+        154,
+        214,
+        164,
+        109
+      ]
+    },
+    {
+      "name": "Grupo",
+      "discriminator": [
+        89,
+        97,
+        51,
+        117,
+        59,
+        61,
+        103,
+        117
+      ]
+    },
+    {
+      "name": "Tarea",
+      "discriminator": [
+        21,
+        189,
+        56,
+        58,
+        86,
+        108,
+        182,
+        54
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "TextoVacio",
+      "msg": "El texto no puede estar vacío"
+    },
+    {
+      "code": 6001,
+      "name": "TextoMuyLargo",
+      "msg": "El texto supera los 32 caracteres"
+    },
+    {
+      "code": 6002,
+      "name": "DescripcionMuyLarga",
+      "msg": "La descripción supera los 200 caracteres"
+    },
+    {
+      "code": 6003,
+      "name": "CalificacionInvalida",
+      "msg": "La calificación debe estar entre 0 y 100"
+    },
+    {
+      "code": 6004,
+      "name": "NoAutorizado",
+      "msg": "Solo el profesor del grupo puede hacer esta operación"
+    },
+    {
+      "code": 6005,
+      "name": "CuentaNoRelacionada",
+      "msg": "La cuenta no pertenece a este grupo o alumno"
+    },
+    {
+      "code": 6006,
+      "name": "GrupoConAlumnos",
+      "msg": "No se puede eliminar un grupo que todavía tiene alumnos"
+    },
+    {
+      "code": 6007,
+      "name": "AlumnoConTareas",
+      "msg": "No se puede eliminar un alumno que todavía tiene tareas"
+    },
+    {
+      "code": 6008,
+      "name": "TareaNoCalificada",
+      "msg": "Solo se pueden eliminar tareas ya calificadas"
+    },
+    {
+      "code": 6009,
+      "name": "TareaYaCalificada",
+      "msg": "No se puede editar una tarea ya calificada"
+    },
+    {
+      "code": 6010,
+      "name": "Desbordamiento",
+      "msg": "Desbordamiento numérico"
+    }
+  ],
+  "types": [
+    {
+      "name": "Alumno",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "grupo",
+            "type": "pubkey"
+          },
+          {
+            "name": "nombre",
+            "type": "string"
+          },
+          {
+            "name": "total_tareas",
+            "type": "u32"
+          },
+          {
+            "name": "tareas_pendientes",
+            "type": "u32"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Grupo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "profesor",
+            "type": "pubkey"
+          },
+          {
+            "name": "nombre",
+            "type": "string"
+          },
+          {
+            "name": "total_alumnos",
+            "type": "u32"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Tarea",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "alumno",
+            "type": "pubkey"
+          },
+          {
+            "name": "titulo",
+            "type": "string"
+          },
+          {
+            "name": "descripcion",
+            "type": "string"
+          },
+          {
+            "name": "calificada",
+            "type": "bool"
+          },
+          {
+            "name": "calificacion",
+            "type": "u8"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
+}

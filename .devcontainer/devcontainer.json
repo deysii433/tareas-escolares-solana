@@ -1,0 +1,7 @@
+{
+  "name": "Tareas Escolares Solana",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  "postCreateCommand": "npm ci && npm run cliente",
+  "forwardPorts": [5173],
+  "portsAttributes": { "5173": { "label": "Frontend", "onAutoForward": "notify" } }
+}
